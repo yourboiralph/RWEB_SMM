@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,11 @@ Route::view('/proj', 'components.modal.select-client');
 Route::view('/admin/joborder', 'admin.joborder')->name('admin.joborder');
 Route::get('/admin/project/create', [ProjectController::class, 'create'])->name('admin.project.create');
 Route::post('/admin/project/store', [ProjectController::class, 'store']);
-
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('admin.project');
+
+
+Route::get('admin/joborder', [JobController::class, 'index'])->name('admin.joborder');
+Route::get('/admin/joborder/create', [JobController::class, 'create'])->name('admin.joborder.create');
+Route::post('/admin/joborder/store', [JobController::class, 'store']);
 
 require __DIR__.'/auth.php';

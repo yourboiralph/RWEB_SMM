@@ -17,4 +17,28 @@ class Project extends Model
         'target_date',
         'status',
     ];
+
+    /**
+     * Get the user who issued the project.
+     */
+    public function issuedBy()
+    {
+        return $this->belongsTo(User::class, 'issued_by');
+    }
+
+    /**
+     * Get the client associated with the project.
+     */
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
+    }
+
+    /**
+     * Get the jobs associated with the project.
+     */
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }
