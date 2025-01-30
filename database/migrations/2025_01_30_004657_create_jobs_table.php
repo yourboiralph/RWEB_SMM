@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id')->unique();
-            $table->unsignedBigInteger('worked_by')->unique();
-            $table->unsignedBigInteger('issued_by')->unique();
+            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('worked_by');
+            $table->unsignedBigInteger('issued_by');
             $table->string('job_name');
             $table->text('description');
             $table->date('target_date');

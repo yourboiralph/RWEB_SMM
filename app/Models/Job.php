@@ -26,6 +26,20 @@ class Job extends Model
     {
         return $this->belongsTo(Project::class);
     }
-    
 
+    /**
+     * Get the user who worked on the job.
+     */
+    public function workedBy()
+    {
+        return $this->belongsTo(User::class, 'worked_by');
+    }
+
+    /**
+     * Get the user who issued the job.
+     */
+    public function issuedBy()
+    {
+        return $this->belongsTo(User::class, 'issued_by');
+    }
 }
