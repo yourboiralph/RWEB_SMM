@@ -36,4 +36,8 @@ Route::view('/client/projectdev', 'client.project-development')->name('client.pr
 Route::view('/client/profile', 'client.profile')->name('client.profile');
 Route::view('/client/promotions', 'client.promotions')->name('client.promotions');
 
+// ADMINS
+Route::view('/admin/joborder', 'admin.joborder')->name('admin.joborder');
+Route::view('/admin/project', 'admin.project')->name('admin.project');
+
 require __DIR__.'/auth.php';

@@ -1,6 +1,6 @@
 <x-navbar>
           {{-- UPPER PART --}}
-          <div class="grid grid-cols-3">
+        <div class="grid grid-cols-3">
             <x-pagetitle header="Dashboard" />
             <div class="bg-[#fa7011] rounded-bl-[40px] flex items-center justify-center gap-8 ml-8 mb-8">
                 <h1 class="text-white">Hi, Gabby</h1>
