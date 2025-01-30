@@ -38,7 +38,7 @@ class ProjectController extends Controller
             'status' => "new",
         ]);
 
-        return redirect()->route('admin.project');
+        return redirect()->route('admin.create.project');
 
     }
 }

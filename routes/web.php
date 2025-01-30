@@ -37,12 +37,12 @@ Route::view('/client/projectdev', 'client.project-development')->name('client.pr
 Route::view('/client/profile', 'client.profile')->name('client.profile');
 Route::view('/client/promotions', 'client.promotions')->name('client.promotions');
 
+// MODALS
+Route::view('/proj', 'components.modal.select-client');
+
 // ADMINS
 Route::view('/admin/joborder', 'admin.joborder')->name('admin.joborder');
-Route::view('/admin/project', 'admin.project')->name('admin.project');
-
-
-Route::get('/admin/create/project', [ProjectController::class, 'create']);
+Route::get('/admin/create/project', [ProjectController::class, 'create'])->name('admin.create.project');
 Route::post('/admin/store/project', [ProjectController::class, 'store']);
 
 

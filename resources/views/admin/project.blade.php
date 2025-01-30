@@ -1,15 +1,6 @@
 <x-navbar>
     {{-- UPPER PART --}}
-    <div class="grid grid-cols-3">
-        <x-pagetitle header="Project" />
-        <div class="bg-[#fa7011] rounded-bl-[40px] flex items-center justify-center gap-8 ml-8 mb-8">
-            <h1 class="text-white">Hi, Gabby</h1>
-            <img src="/Assets/user-profile.png" class="w-20" alt="" draggable="false">
-            <div>
-                <i class="fa-solid fa-power-off text-xl bg-white px-2 py-1 rounded-lg" style="color: #fa7011;"></i>
-            </div>
-        </div>
-    </div>
+    <x-header.upper-part name="{{$auth->name}}" header="Project" />
 
     {{-- Main Content --}}
     <hr>
@@ -26,12 +17,14 @@
             </div>
             <div class="mt-4">
                 <label class="block text-sm text-[#fa7011]">Client</label>
-                <select name="client_id" class="border p-2 w-full rounded-md">
-                    <option value="">Select Client</option>
-                    @foreach($clients as $client)
-    <option value={{$client->id}}>{{$client->name}}</option>
-@endforeach
-                </select>
+                <p id="selected-client">No client selected</p>
+                <input type="hidden" name="client_id" id="client-id">
+                <div
+                    class="w-fit px-4 py-2 bg-[#fa7011] cursor-pointer rounded-lg text-white"
+                    id="open-modal"
+                >
+                    Select Clients
+                </div>
             </div>
             <div class="mt-4">
                 <label class="block text-sm text-[#fa7011]">Deadline</label>
@@ -43,7 +36,44 @@
             </div>
         </form>
     </div>
-    
 
+    {{-- Include the Modal --}}
+    @include('components.modal.select-client')
 
+    {{-- Modal Toggle Script --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openModal = document.getElementById('open-modal');
+            const modal = document.getElementById('client-modal');
+            const closeModal = document.getElementById('close-modal');
+            const clientElements = document.querySelectorAll('.select-client');
+            const selectedClientDisplay = document.getElementById('selected-client');
+            const clientIdInput = document.getElementById('client-id');
+
+            // Open modal
+            openModal.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            // Select a client and update the UI
+            clientElements.forEach(element => {
+                element.addEventListener('click', () => {
+                    const clientId = element.getAttribute('data-client-id');
+                    const clientName = element.getAttribute('data-client-name');
+
+                    // Update UI
+                    selectedClientDisplay.textContent = clientName;
+                    clientIdInput.value = clientId;
+
+                    // Close modal
+                    modal.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </x-navbar>
