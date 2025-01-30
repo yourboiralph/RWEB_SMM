@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id')->unique();
+            $table->unsignedBigInteger('worked_by')->unique();
+            $table->unsignedBigInteger('issued_by')->unique();
             $table->string('job_name');
             $table->text('description');
             $table->date('target_date');
@@ -23,6 +25,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreign('worked_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('issued_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -28,16 +28,18 @@ class JobController extends Controller
     {
 
         $request->validate([
-            'project_name' => 'required|string|max:255',
-            'client_id' => 'required',
+            'project_id' => 'required',
+            'job_name' => 'required|string',
+            'worked_by' => 'required',
             'description' => 'nullable|string',
             'target_date' => 'required|date',
         ]);
         // Create a new project
         $job = Job::create([
-            'project_name' => $request->project_name,
+            'project_id' => $request->project_id,
+            'worked_by' => $request->worked_by,
             'issued_by' => auth()->user()->id,
-            'client_id' => $request->client_id,
+            'job_name' => $request->job_name,
             'description' => $request->description,
             'target_date' => $request->target_date,
             'status' => "new",

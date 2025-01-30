@@ -11,6 +11,8 @@ class Job extends Model
 
     protected $fillable = [
         'project_id',
+        'worked_by',
+        'issued_by',
         'job_name',
         'description',
         'target_date',
@@ -24,4 +26,6 @@ class Job extends Model
     {
         return $this->belongsTo(Project::class);
     }
+    
+
 }
