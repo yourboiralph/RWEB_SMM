@@ -42,8 +42,9 @@ Route::view('/proj', 'components.modal.select-client');
 
 // ADMINS
 Route::view('/admin/joborder', 'admin.joborder')->name('admin.joborder');
-Route::get('/admin/create/project', [ProjectController::class, 'create'])->name('admin.create.project');
-Route::post('/admin/store/project', [ProjectController::class, 'store']);
+Route::get('/admin/project/create', [ProjectController::class, 'create'])->name('admin.project.create');
+Route::post('/admin/project/store', [ProjectController::class, 'store']);
 
+Route::get('/admin/project', [ProjectController::class, 'index'])->name('admin.project');
 
 require __DIR__.'/auth.php';

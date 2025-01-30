@@ -8,13 +8,21 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    public function index()
+    {
+        $projects = Project::all(); // Fetch all users
+        $auth = auth()->user();
+
+        return view('admin.project', compact('projects', 'auth')); // Pass data to the view
+    }
     public function create()
     {
         $users = User::all(); // Fetch all users
         $clients = User::where('role', 1)->get(); // Fetch only clients with role = 3
         $auth = auth()->user();
 
-        return view('admin.project', compact('users', 'clients', 'auth')); // Pass data to the view
+        return view('admin.project-create', compact('users', 'clients', 'auth')); // Pass data to the view
     }
 
 
@@ -38,7 +46,7 @@ class ProjectController extends Controller
             'status' => "new",
         ]);
 
-        return redirect()->route('admin.create.project');
+        return redirect()->route('admin.project.create');
 
     }
 }
