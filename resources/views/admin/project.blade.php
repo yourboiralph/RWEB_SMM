@@ -14,7 +14,8 @@
     {{-- Main Content --}}
     <hr>
     <div class="m-10 px-6">
-        <form action="#">
+        <form action="{{url('/admin/store/project')}}" method="POST">
+            @csrf
             <div>
                 <label class="block text-sm text-[#fa7011]">Project Name</label>
                 <input type="text" name="project_name" class="border p-2 w-full rounded-md">
@@ -27,9 +28,9 @@
                 <label class="block text-sm text-[#fa7011]">Client</label>
                 <select name="client_id" class="border p-2 w-full rounded-md">
                     <option value="">Select Client</option>
-                    <option value="employee1">Employee 1</option>
-                    <option value="employee2">Employee 2</option>
-                    <option value="employee3">Employee 3</option>
+                    @foreach($clients as $client)
+    <option value={{$client->id}}>{{$client->name}}</option>
+@endforeach
                 </select>
             </div>
             <div class="mt-4">
@@ -42,5 +43,7 @@
             </div>
         </form>
     </div>
+    
+
 
 </x-navbar>

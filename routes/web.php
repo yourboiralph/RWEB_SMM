@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,5 +40,10 @@ Route::view('/client/promotions', 'client.promotions')->name('client.promotions'
 // ADMINS
 Route::view('/admin/joborder', 'admin.joborder')->name('admin.joborder');
 Route::view('/admin/project', 'admin.project')->name('admin.project');
+
+
+Route::get('/admin/create/project', [ProjectController::class, 'create']);
+Route::post('/admin/store/project', [ProjectController::class, 'store']);
+
 
 require __DIR__.'/auth.php';
