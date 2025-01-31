@@ -26,10 +26,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/client/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/client/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/client/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/client/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/client/profile', [ProfileController::class, 'index'])->name('client.profile');
+    Route::get('/client/profile/edit', [ProfileController::class, 'edit'])->name('client.profile.edit');
+    Route::patch('/client/profile/update', [ProfileController::class, 'update'])->name('client.profile.update');
+    Route::delete('/client/profile/destroy', [ProfileController::class, 'destroy'])->name('client.profile.destroy');
 });
 
 Route::get('/client/dashboard', function(){

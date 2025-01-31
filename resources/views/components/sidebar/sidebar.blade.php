@@ -1,5 +1,5 @@
 {{-- SIDEBAR MENU --}}
-@props(['link' => ''])
+@props(['link' => 'client'])
 
 <div class="space-y-4 z-10">
     <div class="hidden md:block md:px-6">

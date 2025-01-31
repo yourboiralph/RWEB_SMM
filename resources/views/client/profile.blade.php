@@ -5,7 +5,7 @@
           <x-header.upper-part name="Gabbiy" header="Profile" />
 
           {{-- Middle Part --}}
-          <div class="grid px-10 mt-20 grid-cols-3 h-80 gap-6 pr-32 text-black">
+          <div class="grid px-10 mt-10 grid-cols-3 h-80 gap-6 pr-32 text-black">
             <div class="col-span-3 lg:col-span-1 bg-white shadow-md rounded-md pt-10">
               <div class="w-full flex justify-center items-center">
                 <img src="/Assets/user-profile-profilepage.png" alt="">
@@ -22,7 +22,7 @@
             <div class="col-span-3 lg:col-span-2 bg-white shadow-md rounded-md p-5">
               <div class="flex justify-between">
                 <h1 class="text-sm">User Information</h1>
-                <div class="px-4 py-1 bg-[#f68e12]">Edit</div>
+                <div class="px-4 py-1 bg-[#f68e12] cursor-pointer text-white" onclick="">Edit</div>
               </div>  
               <div class="space-y-2">
                 <div>
