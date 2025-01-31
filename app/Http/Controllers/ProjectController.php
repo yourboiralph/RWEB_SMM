@@ -51,30 +51,30 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::with('client')->findOrFail($id); // Eager load the client relationship
         $auth = auth()->user();
 
-        return view('admin.project-show', compact('project', 'auth'));
+        return view('admin.project.view', compact('project', 'auth'));
     }
 
     public function edit($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::with('client')->findOrFail($id); // Eager load the client relationship
         $users = User::all();
         $clients = User::where('role', 1)->get();
         $auth = auth()->user();
 
-        return view('admin.project-edit', compact('project', 'users', 'clients', 'auth'));
+        return view('admin.project.edit', compact('project', 'users', 'clients', 'auth'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'project_name' => 'required|string|max:255',
-            'client_id' => 'required',
+            'project_name' => 'sometimes|string|max:255',
+            'client_id' => 'sometimes',
             'description' => 'nullable|string',
-            'target_date' => 'required|date',
-            'status' => 'required|string',
+            'target_date' => 'sometimes|date',
+            'status' => 'sometimes|string',
         ]);
 
         $project = Project::findOrFail($id);
@@ -83,10 +83,10 @@ class ProjectController extends Controller
             'client_id' => $request->client_id,
             'description' => $request->description,
             'target_date' => $request->target_date,
-            'status' => $request->status,
+            
         ]);
 
-        return redirect()->route('admin.project.index')->with('success', 'Project updated successfully');
+        return redirect()->route('admin.project')->with('success', 'Project updated successfully');
     }
 
     public function destroy($id)
@@ -94,6 +94,6 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return redirect()->route('admin.project.index')->with('success', 'Project deleted successfully');
+        return redirect()->route('admin.project')->with('success', 'Project deleted successfully');
     }
 }

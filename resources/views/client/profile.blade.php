@@ -1,4 +1,4 @@
-<x-navbar>
+<x-navbar link="client">
   {{-- UPPER PART --}}
   <div class="grid grid-cols-3">
     <x-pagetitle header="Profile" />
