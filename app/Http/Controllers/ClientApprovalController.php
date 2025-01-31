@@ -6,13 +6,17 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ApprovalController extends Controller
+class ClientApprovalController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $list_of_projects = Project::where('client_id', $id)->with('user')->get();
+        // Paginate the projects to show 7 items per page
+        $list_of_projects = Project::where('client_id', auth()->user()->id)
+                                    ->paginate(7);
+    
         return view('client.project-development', compact('list_of_projects'));
     }
+    
 
     public function show($id)
     {

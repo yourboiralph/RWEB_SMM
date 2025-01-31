@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientApprovalController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -34,7 +35,8 @@ Route::get('/client/dashboard', function(){
     return view('client.dashboard');
 })->name('client.dashboard');
 
-Route::view('/client/projectdev', 'client.project-development')->name('client.projectdev');
+
+Route::get('/client/projectdev', [ClientApprovalController::class, 'index'])->name('client.projectdev');
 Route::view('/client/profile', 'client.profile')->name('client.profile');
 Route::view('/client/promotions', 'client.promotions')->name('client.promotions');
 
