@@ -11,10 +11,10 @@
             <img src="/Assets/user-profile-profilepage.png" alt="">
           </div>
           <div class="text-center">
-            <h1>Ga Bby</h1>
+            <h1>{{$user->name}}</h1>
           </div>
           <div class="text-center">
-            <h1>Bajada JP Laurel, Davao City</h1>
+            <h1>{{$user->address}}</h1>
           </div>
         </div>
 
@@ -22,14 +22,17 @@
           <div class="text-slate-500">
             <h1 class="text-sm">User Information</h1>
           </div>
-
+          <form action="{{ route('client.profile.update') }}" method="POST">
+           
+  @csrf
+  @method('PUT')
           <div class="space-y-2 ">
             <div class="h-fit">
               <div class="gap-4 items-center">
                 <div class="flex space-x-2 items-center text-slate-500 font-bold">
                   <h1>Name</h1>
                 </div>
-                <input class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]" value="Ga Bby">
+                <input class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]" value={{$user->name}} name="name">
               </div>
 
               <div class="gap-4 items-center">
@@ -37,14 +40,14 @@
                   <h1>Email</h1>
                 </div>
                 <input class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]"
-                  value="Oniichan@gmail.com">
+                value={{$user->email}} name="email">
               </div>
 
               <div class="gap-4 items-center">
                 <div class="flex space-x-2 items-center text-slate-500 font-bold">
                   <h1>Phone</h1>
                 </div>
-                <input class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]" value="09458941145">
+                <input class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]" value={{$user->phone}} name="phone">
               </div>
 
               <div class="gap-4 items-center mb-10">
@@ -52,7 +55,7 @@
                   <h1>Address</h1>
                 </div>
                 <input class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]"
-                  value="Bajada JP Laurel, Davao City">
+                value={{$user->address}} name="address">
               </div>
             </div>
 
@@ -67,28 +70,29 @@
                   <h1>Current Password</h1>
                 </div>
                 <input type="password" class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]"
-                  value="********">
+                >
               </div>
               <div class="gap-4 items-center text-slate-500 font-bold">
                 <div class="flex space-x-2 items-center">
                   <h1>New Password</h1>
                 </div>
                 <input type="password" class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]"
-                  value="********">
+                >
               </div>
               <div class="gap-4 items-center text-slate-500 font-bold">
                 <div class="flex space-x-2 items-center">
                   <h1>Confirm Password</h1>
                 </div>
                 <input type="password" class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]"
-                  value="********">
+                  >
               </div>
 
-              <div class="px-4 py-2 bg-[#f68e12] w-fit mt-4 cursor-pointer text-white">
+              <button type="submit" class="px-4 py-2 bg-[#f68e12] w-fit mt-4 cursor-pointer text-white">
                 Save
-              </div>
+              </button>
             </div>
           </div>
+        </form>
         </div>
       </div>
     </div>

@@ -24,6 +24,7 @@ class UserFactory extends Factory
             'role' => fake()->numberBetween(1, 5), // Generates a number between 1 and 5
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
+            'image' => fake()->filePath(),
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // Hashed password
             'remember_token' => Str::random(10),
