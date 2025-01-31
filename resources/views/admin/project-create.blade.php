@@ -1,27 +1,33 @@
 <x-navbar>
     {{-- UPPER PART --}}
-    <x-header.upper-part name="{{$auth->name}}" header="Project" />
+    <x-header.upper-part name="{{{{ $auth->name ?? '???' }}}}" header="Project" />
 
     {{-- Main Content --}}
     <hr>
     <div class="m-10 px-6 relative">
 
-        <div class="w-full flex justify-end">
+        <div class="w-full flex justify-between">
+            <h1 class="text-[#fa7011] font-bold text-2xl">Create a project</h1>
             <div class="px-4 py-2 bg-[#fa7011] w-fit rounded-md mb-4 text-white cursor-pointer hover:bg-[#e5630f]" onclick="window.location.href='{{ route('admin.project') }}'">
                 Back
             </div>  
         </div>
-
-        <h1 class="text-[#fa7011] font-bold text-2xl mb-10">Create a project</h1>
-        <form action="{{url('/admin/store/project')}}" method="POST">
+        <form action="{{url('/admin/project/store')}}" method="POST">
             @csrf
             <div>
                 <label class="block text-sm text-[#fa7011]">Project Name</label>
-                <input type="text" name="project_name" class="border p-2 w-full rounded-md">
-            </div>
+                <input type="text" name="project_name" 
+                    class="border p-2 w-full rounded-md @error('project_name') border-red-500 @enderror">
+                @error('project_name')
+                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
+            </div>            
             <div class="mt-4">
                 <label class="block text-sm text-[#fa7011]">Project Description</label>
-                <textarea name="description" id="description" class="border p-2 w-full h-auto rounded-md resize-none max-h-96 overflow-y-auto"></textarea>
+                <textarea name="description" id="description" class="border p-2 w-full h-auto rounded-md resize-none max-h-96 overflow-y-auto @error('description') border-red-500 @enderror"></textarea>
+                @error('description')
+                    <p class="text-red-500 text-sm">{{$message}}</p>
+                @enderror
             </div>
             <div class="mt-4">
                 <label class="block text-sm text-[#fa7011]">Client</label>
@@ -33,10 +39,16 @@
                 >
                     Select Clients
                 </div>
+                @error('client_id')
+                    <p class="text-red-500 text-sm">{{$message}}</p>
+                @enderror
             </div>
             <div class="mt-4">
                 <label class="block text-sm text-[#fa7011]">Deadline</label>
-                <input type="date" class="border p-2 w-full rounded-md" name="target_date">
+                <input type="date" class="border p-2 w-full rounded-md @error('target_date') border-red-500 @enderror" name="target_date">
+                @error('target_date')
+                    <p class="text-red-500 text-sm">{{$message}}</p>
+                @enderror
             </div>
             {{-- Submit Button Positioned to Lower Right --}}
             <div class="flex justify-end mt-6">
