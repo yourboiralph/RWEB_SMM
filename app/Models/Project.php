@@ -15,6 +15,9 @@ class Project extends Model
         'client_id',
         'description',
         'target_date',
+        'signature_admin',
+        'signature_top_manager',
+        'signature_client',
         'status',
     ];
 
