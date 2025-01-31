@@ -19,8 +19,11 @@ return new class extends Migration
             $table->unsignedBigInteger('issued_by');
             $table->unsignedBigInteger('client_id');
             $table->text('description'); // Changed from string to text
-            $table->date('target_date');
             $table->string('status'); 
+            $table->date('target_date');
+            $table->longText('signature_client')->nullable();
+            $table->longText('signature_admin')->nullable();
+            $table->longText('signature_top_manager')->nullable();
             $table->timestamps();
 
             $table->foreign('issued_by')->references('id')->on('users')->onDelete('cascade');

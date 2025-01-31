@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('job_name');
             $table->text('description');
             $table->date('target_date');
+            $table->longText('signature_admin')->nullable();
+            $table->longText('signature_top_manager')->nullable();
             $table->string('status');
             $table->timestamps();
 

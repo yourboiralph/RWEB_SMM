@@ -16,6 +16,8 @@ class Job extends Model
         'job_name',
         'description',
         'target_date',
+        'signature_admin',
+        'signature_top_manager',
         'status',
     ];
 
