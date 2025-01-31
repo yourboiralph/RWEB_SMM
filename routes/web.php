@@ -26,18 +26,20 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/client/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/client/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/client/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/client/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::get('/client/dashboard', function(){
     return view('client.dashboard');
 })->name('client.dashboard');
 
-
 Route::get('/client/projectdev', [ClientApprovalController::class, 'index'])->name('client.projectdev');
-Route::view('/client/profile', 'client.profile')->name('client.profile');
+Route::get('/client/form/approval/{id}', [ClientApprovalController::class, 'show']);
+
+
 Route::view('/client/promotions', 'client.promotions')->name('client.promotions');
 
 // MODALS
