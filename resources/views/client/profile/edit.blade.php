@@ -3,6 +3,11 @@
     <div class="h-full mx-auto max-w-screen-xl text-sm">
       {{-- UPPER PART --}}
       <x-header.upper-part name="Gabbiy" header="Profile" />
+      @if (session('status'))
+          <div id="success-message" class="bg-green-500 text-white p-4 rounded-md mb-4">
+              {{ session('status') }}
+          </div>
+      @endif
 
       {{-- Middle Part --}}
       <div class="h-auto">
@@ -92,9 +97,11 @@
                       </div>
                       <input type="password" name="current_password"
                         class="pl-4 col-span-2 w-full border rounded-md py-1 border-[#e1e1e1]">
-                      @error('current_password]')
-              <p class="text-sm text-red-700">{{$message}}</p>
-            @enderror
+                        @if(session('errors'))
+                            @if(session('errors')->has('current_password'))
+                                <span style="color: red;">{{ session('errors')->first('current_password') }}</span>
+                            @endif
+                        @endif
                     </div>
                     <div class="gap-4 items-center text-slate-500 font-bold">
                       <div class="flex space-x-2 items-center">
@@ -132,3 +139,14 @@
     </div>
   </x-navbar>
 </div>
+
+<script>
+  setTimeout(function() {
+      var message = document.getElementById('success-message');
+      if (message) {
+          message.style.transition = "opacity 0.5s";
+          message.style.opacity = "0";
+          setTimeout(() => message.style.display = "none", 500); // Wait for fade-out before hiding
+      }
+  }, 3000); // 3 seconds delay
+</script>
