@@ -4,15 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\User;
+use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
 
-    public function index()
-    {
+    // public function index()
+    // {
+    //     $projects = Project::all(); // Fetch all users
+    //     $auth = auth()->user();
+
+    //     return view('admin.project', compact('projects', 'auth')); // Pass data to the view
+    // }
+    public function index(Request $request)
+    {    
         $projects = Project::all(); // Fetch all users
         $auth = auth()->user();
+        if ($request->ajax()) {
+            $data = Project::select(['id', 'project_name', 'description', 'target_date', 'status']);
+            return DataTables::of($data)
+                ->addColumn('action', function ($row) {
+                    return '<a href="' . route('admin.project.edit', $row->id) . '" class="text-blue-500">Edit</a>
+                            <button onclick="confirmDelete(\'' . route('admin.project.destroy', $row->id) . '\')" class="text-red-500 ml-2">Delete</button>';
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
 
         return view('admin.project', compact('projects', 'auth')); // Pass data to the view
     }

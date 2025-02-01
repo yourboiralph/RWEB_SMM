@@ -2,7 +2,7 @@
     <x-navbar link="client">
         <div class="h-full mx-auto max-w-screen-xl">
             {{-- UPPER PART --}}
-            <x-header.upper-part name="Gabbiy" header="Dashboard" />
+            <x-header.upper-part header="Dashboard" />
 
             {{-- Middle Part --}}
             <div class="h-auto">

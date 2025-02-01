@@ -51,7 +51,7 @@ Route::get('/admin/project/create', [ProjectController::class, 'create'])->name(
 Route::get('/admin/project/view/{id}', [ProjectController::class, 'show'])->name('admin.project.view');
 Route::get('/admin/project/edit/{id}', [ProjectController::class, 'edit'])->name('admin.project.edit');
 Route::put('/admin/project/update/{id}', [ProjectController::class, 'update'])->name('admin.project.update');
-Route::get('/admin/project/delete', [ProjectController::class, 'destroy'])->name('admin.project.delete');
+Route::get('/admin/project/destroy', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
 Route::post('/admin/project/store', [ProjectController::class, 'store']);
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('admin.project');
 

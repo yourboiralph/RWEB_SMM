@@ -1,6 +1,8 @@
-<x-navbar>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<x-navbar link="admin">
     {{-- UPPER PART --}}
-    <x-header.upper-part name="{{$auth->name}}" header="Project" />
+    <x-header.upper-part header="Project" />
 
     {{-- Main Content --}}
     <hr>
