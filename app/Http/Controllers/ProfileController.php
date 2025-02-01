@@ -35,8 +35,8 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        // Update validated attributes except the password.
-        $user->fill($request->except(['password', 'current_password', 'password_confirmation']));
+        // Update validated attributes except the password and image.
+        $user->fill($request->except(['password', 'current_password', 'password_confirmation', 'image']));
 
         // Reset email verification if the email has changed.
         if ($user->isDirty('email')) {
@@ -53,10 +53,29 @@ class ProfileController extends Controller
             }
         }
 
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            // Delete old image if exists
+            if ($user->image && file_exists(public_path($user->image))) {
+                unlink(public_path($user->image));
+            }
+
+            $file = $request->file('image');
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            $destination = public_path('uploads');
+            $file->move($destination, $file_name);
+            $user->image = 'uploads/' . $file_name; // Update image path
+        }
+
         $user->save();
 
         return Redirect::route('client.profile.edit')->with('status', 'profile-updated');
     }
+
 
 
 
