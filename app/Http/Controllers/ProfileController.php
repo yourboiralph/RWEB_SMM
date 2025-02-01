@@ -35,23 +35,30 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        // Update the user's other attributes.
-        $user->fill($request->validated());
+        // Update validated attributes except the password.
+        $user->fill($request->except(['password', 'current_password', 'password_confirmation']));
 
         // Reset email verification if the email has changed.
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
-        // Only update the password if a new password is provided.
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
+        // Handle password update
+        if ($request->filled('current_password') || $request->filled('password')) {
+            if ($request->filled('password')) {
+                $user->password = Hash::make($request->input('password'));
+            } else {
+                return Redirect::route('client.profile.edit')
+                    ->withErrors(['password' => 'New password and confirmation are required if you provide the current password.']);
+            }
         }
 
         $user->save();
 
         return Redirect::route('client.profile.edit')->with('status', 'profile-updated');
     }
+
+
 
 
     /**
