@@ -55,7 +55,7 @@
               </div>
 
               {{-- Bottom Part --}}
-              <div class="w-full mt-20">
+              <div class="w-full pt-20">
                   <div class="carousel">
                       <div class="carousel-track">
                           <a href="https://link1.com" class="carousel-item">

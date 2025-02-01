@@ -11,10 +11,10 @@
                 <img src="/Assets/user-profile-profilepage.png" alt="">
               </div>       
               <div class="text-center">
-                <h1>Ga Bby</h1>  
+                <h1>{{$user->name}}</h1>  
               </div>       
               <div class="text-center">
-                <h1>Bajada JP Laurel, Davao City</h1>  
+                <h1>{{$user->address}}</h1>  
               </div>       
             </div>
 
@@ -22,7 +22,7 @@
             <div class="col-span-3 lg:col-span-2 bg-white shadow-md rounded-md p-5">
               <div class="flex justify-between">
                 <h1 class="text-sm">User Information</h1>
-                <div class="px-4 py-1 bg-[#f68e12] cursor-pointer text-white" onclick="">Edit</div>
+                <div class="px-4 py-1 bg-[#f68e12] cursor-pointer text-white" onclick="window.location.assign('{{ route('client.profile.edit') }}')">Edit</div>
               </div>  
               <div class="space-y-2">
                 <div>
@@ -30,28 +30,28 @@
                     <img src="/Assets/name.png" class="w-5 h-4" alt="">
                     <h1>Name</h1>
                   </div>
-                  <p class="pl-4">Ga Bby</p>
+                  <p class="pl-4">{{$user->name}}</p>
                 </div>
                 <div>
                   <div class="flex space-x-2 items-center">
                     <img src="/Assets/email.png" class="w-5 h-4" alt="">
                     <h1>Email</h1>
                   </div>
-                  <p class="pl-4">Oniichan@gmail.com</p>
+                  <p class="pl-4">{{$user->email}}</p>
                 </div>
                 <div>
                   <div class="flex space-x-2 items-center">
                     <img src="/Assets/phone-number.png" class="w-5 h-4" alt="">
                     <h1>Phone</h1>
                   </div>
-                  <p class="pl-4">09458941145</p>
+                  <p class="pl-4">{{$user->phone}}</p>
                 </div>
                 <div>
                   <div class="flex space-x-2 items-center">
                     <img src="/Assets/address.png" class="w-5 h-4" alt="">
                     <h1>Address</h1>
                   </div>
-                  <p class="pl-4">Bajada, JP Laurel, Davao City</p>
+                  <p class="pl-4">{{$user->address}}</p>
                 </div>
               </div>      
             </div>
