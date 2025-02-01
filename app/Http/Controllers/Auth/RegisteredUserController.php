@@ -35,20 +35,27 @@ class RegisteredUserController extends Controller
             'role' => ['required'],
             'phone' => ['required'],
             'address' => ['required'],
-            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        
+        $picturePath = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            $destination = public_path('uploads');
+            $file->move($destination, $file_name);
+            $picturePath = 'uploads/' . $file_name;  // Assign to picturePath
+        }
 
-        // Store the image
-        $imagePath = $request->file('image')->store('images', 'public');
 
         $user = User::create([
             'name' => $request->name,
             'role' => $request->role,
             'phone' => $request->phone,
             'address' => $request->address,
-            'image' => $imagePath, // Save the image path
+            'image' => $picturePath, // Save the image path
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
