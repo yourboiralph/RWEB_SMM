@@ -1,6 +1,6 @@
 <x-navbar link="admin">
     {{-- UPPER PART --}}
-    <x-header.upper-part name="{{$auth->name}}" header="Project" />
+    <x-header.upper-part header="Project" />
 
     {{-- Main Content --}}
     <hr>
@@ -13,7 +13,7 @@
         </div>
 
         <h1 class="text-[#fa7011] font-bold text-2xl mb-10">Create a project</h1>
-        <form action="{{url('/admin/store/project')}}" method="POST">
+        <form action="{{url('/admin/project/store')}}" method="POST">
             @csrf
             <div>
                 <label class="block text-sm text-[#fa7011]">Project Name</label>

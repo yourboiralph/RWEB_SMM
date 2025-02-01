@@ -2,11 +2,11 @@
   <x-navbar link="client">
       <div class="h-full mx-auto max-w-screen-xl">
           {{-- UPPER PART --}}
-          <x-header.upper-part name="Gabbiy" header="Profile" />
+          <x-header.upper-part header="Profile" />
 
           {{-- Middle Part --}}
           <div class="grid px-10 mt-10 grid-cols-3 h-80 gap-6 pr-32 text-black">
-            <div class="col-span-3 lg:col-span-1 bg-white shadow-md rounded-md pt-10">
+            <div class="px-10 col-span-3 lg:col-span-1 bg-white shadow-md rounded-md pt-10">
               <div class="w-full flex justify-center items-center">
                 <img src="/Assets/user-profile-profilepage.png" alt="">
               </div>       
