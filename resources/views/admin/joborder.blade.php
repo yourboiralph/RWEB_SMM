@@ -1,6 +1,6 @@
-<x-navbar>
+<x-navbar link="admin">
     {{-- UPPER PART --}}
-    <x-header.upper-part name="{{ $auth->name ?? '???' }}" header="Job Order" />
+    <x-header.upper-part name="{{ $auth->name }}" header="Job Order"/>
 
     {{-- Main Content --}}
     <hr>

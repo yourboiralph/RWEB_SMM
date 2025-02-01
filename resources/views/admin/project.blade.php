@@ -1,4 +1,4 @@
-<x-navbar link="client">
+<x-navbar link="admin">
     {{-- UPPER PART --}}
     <x-header.upper-part name="{{ $auth->name }}" header="Projects"/>
 
@@ -91,9 +91,3 @@
         }
     }, 3000); // 3 seconds delay
 </script>
-
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
