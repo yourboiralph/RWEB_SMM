@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('project_name')->unique();
+            $table->string('project_name');
             $table->unsignedBigInteger('issued_by');
             $table->unsignedBigInteger('client_id');
             $table->text('description'); // Changed from string to text

@@ -46,7 +46,7 @@ class ProjectController extends Controller
             'status' => "new",
         ]);
 
-        return redirect()->route('admin.project.create')->with('success', 'Project created successfully');
+        return redirect()->route('admin.project')->with('success', 'Project created successfully');
     }
 
     public function show($id)
