@@ -33,20 +33,17 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        // Remove debug statement
-        // dd($current_password);
-
         $user = $request->user();
-        
-        // Update user data, except password (if not provided)
+
+        // Update the user's other attributes.
         $user->fill($request->validated());
 
-        // Reset email verification if email is changed
+        // Reset email verification if the email has changed.
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
-        // If a new password is provided, hash it before saving
+        // Only update the password if a new password is provided.
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
@@ -55,6 +52,7 @@ class ProfileController extends Controller
 
         return Redirect::route('client.profile.edit')->with('status', 'profile-updated');
     }
+
 
     /**
      * Delete the user's account.
