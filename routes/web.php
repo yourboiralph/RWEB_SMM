@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ClientApprovalController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -49,7 +49,7 @@ Route::view('/client/promotions', 'client.promotions')->name('client.promotions'
 Route::view('/proj', 'components.modal.select-client');
 
 // ADMINS
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/admin/project/create', [ProjectController::class, 'create'])->name('admin.project.create');
 Route::get('/admin/project/view/{id}', [ProjectController::class, 'show'])->name('admin.project.view');
