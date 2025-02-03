@@ -16,7 +16,7 @@
             </a>
         </div>
         <div class="hidden md:block md:px-6">
-            <a href="{{ url("/projectdev") }}"
+            <a href="{{ url("/admin/projectdev") }}"
                 class="p-2 flex items-center w-full gap-2 rounded-md 
                 {{ request()->is("admin/project", "admin/project/*") ? 'bg-[#f68e12] text-white font-bold' : '' }}"
                 style="{{ request()->is("admin/project", "admin/project/*") ? 'box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);' : '' }}">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="hidden md:block md:px-6">
-            <a href="{{ url("/joborder") }}"
+            <a href="{{ url("/admin/joborder") }}"
                 class="p-2 flex items-center w-full gap-2 rounded-md 
                 {{ request()->is("admin/joborder", "admin/joborder/*") ? 'bg-[#f68e12] text-white font-bold' : '' }}"
                 style="{{ request()->is("admin/joborder", "admin/joborder/*") ? 'box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);' : '' }}">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="hidden md:block md:px-6">
-            <a href="{{ url("/projectdev") }}"
+            <a href="{{ url("/client/projectdev") }}"
                 class="p-2 flex items-center w-full gap-2 rounded-md 
                 {{ request()->is("client/projectdev", "client/projectdev/*") ? 'bg-[#f68e12] text-white font-bold' : '' }}"
                 style="{{ request()->is("client/projectdev", "client/projectdev/*") ? 'box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);' : '' }}">
@@ -70,7 +70,7 @@
         </div>
 
         <div class="hidden md:block md:px-6">
-            <a href="{{ url("/profile") }}"
+            <a href="{{ url("/client/profile") }}"
                 class="p-2 flex items-center w-full gap-2 rounded-md 
                 {{ request()->is("client/profile", "client/profile/*") ? 'bg-[#f68e12] text-white font-bold' : '' }}"
                 style="{{ request()->is("client/profile", "client/profile/*") ? 'box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);' : '' }}">
