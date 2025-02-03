@@ -15,10 +15,15 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function index(Request $request) {
-        return view('client.profile', [
-            'user' => $request->user(),
-        ]);
+    public function index(Request $request)
+    {
+        $user = auth()->user();
+
+        if ($user->role == 2) {
+            return view('admin.profile', compact('user'));
+        } elseif ($user->role == 1) {
+            return view('client.profile', compact('user'));
+        }
     }
 
     public function edit(Request $request): View
