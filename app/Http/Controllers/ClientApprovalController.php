@@ -35,7 +35,7 @@ class ClientApprovalController extends Controller
             'signature_client' => $request->signature_client,
         ]);
 
-        return redirect()->route('client.project-development.show')->with('success', 'Project updated successfully.');
+        return redirect()->route('client.projectdev')->with('success', 'Project updated successfully.');
     }
     public function decline($id)
     {
