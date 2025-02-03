@@ -33,9 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/client/profile/destroy', [ProfileController::class, 'destroy'])->name('client.profile.destroy');
 });
 
-Route::get('/client/dashboard', function(){
-    return view('client.dashboard');
-})->name('client.dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/client/projectdev', [ClientApprovalController::class, 'index'])->name('client.projectdev');
 Route::get('/client/projectdev/form/approval/{id}', [ClientApprovalController::class, 'show'])->name('client.projectdev.form.approval');
@@ -49,7 +48,6 @@ Route::view('/client/promotions', 'client.promotions')->name('client.promotions'
 Route::view('/proj', 'components.modal.select-client');
 
 // ADMINS
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/admin/project/create', [ProjectController::class, 'create'])->name('admin.project.create');
 Route::get('/admin/project/view/{id}', [ProjectController::class, 'show'])->name('admin.project.view');
