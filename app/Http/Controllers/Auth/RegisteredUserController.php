@@ -18,6 +18,13 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
+    
+     public function index()
+     {
+         $users = User::all();
+         return view('admin.users', ['users' => $users]);
+     }
+     
     public function create(): View
     {
         return view('auth.register');
