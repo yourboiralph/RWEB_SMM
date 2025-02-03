@@ -4,8 +4,11 @@ use App\Http\Controllers\AdminApprovalController;
 use App\Http\Controllers\ClientApprovalController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\RevisionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +31,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/client/profile', [ProfileController::class, 'index'])->name('client.profile');
-    Route::get('/client/profile/edit', [ProfileController::class, 'edit'])->name('client.profile.edit');
-    Route::put('/client/profile/update', [ProfileController::class, 'update'])->name('client.profile.update');
-    Route::delete('/client/profile/destroy', [ProfileController::class, 'destroy'])->name('client.profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 
@@ -55,7 +58,6 @@ Route::view('/client/promotions', 'client.promotions')->name('client.promotions'
 Route::view('/proj', 'components.modal.select-client');
 
 // ADMINS
-
 Route::get('/admin/project/create', [ProjectController::class, 'create'])->name('admin.project.create');
 Route::get('/admin/project/view/{id}', [ProjectController::class, 'show'])->name('admin.project.view');
 Route::get('/admin/project/edit/{id}', [ProjectController::class, 'edit'])->name('admin.project.edit');
@@ -67,5 +69,12 @@ Route::get('/admin/project', [ProjectController::class, 'index'])->name('admin.p
 Route::get('admin/joborder', [JobController::class, 'index'])->name('admin.joborder');
 Route::get('/admin/joborder/create', [JobController::class, 'create'])->name('admin.joborder.create');
 Route::post('/admin/joborder/store', [JobController::class, 'store']);
+
+Route::get('/revisions', [RevisionController::class, 'index'])->name('revisions');
+
+Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions');
+
+Route::get('/manual', [ManualController::class, 'index'])->name('manual');
+
 
 require __DIR__.'/auth.php';
