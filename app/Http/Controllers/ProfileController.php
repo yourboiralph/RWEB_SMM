@@ -28,9 +28,17 @@ class ProfileController extends Controller
 
     public function edit(Request $request): View
     {
-        return view('client.profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user = auth()->user();
+
+        if ($user->role == 2) {
+            return view('admin.profile.edit', [
+                'user' => $request->user()
+            ]);
+        } elseif ($user->role == 1) {
+            return view('client.profile.edit', [
+                'user' => $request->user(),
+            ]);
+        }
     }
 
     /**
@@ -78,7 +86,12 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return Redirect::route('client.profile.edit')->with('status', 'profile-updated');
+        if ($user->role == 2) {
+            return Redirect::route('admin.profile.edit')->with('status', 'Profile Updated Successfully!');
+        } elseif ($user->role == 1) {
+            return Redirect::route('client.profile.edit')->with('status', 'Profile Updated Successfully!');
+        }
+        
     }
 
 
