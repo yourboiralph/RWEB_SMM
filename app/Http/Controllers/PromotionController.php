@@ -10,8 +10,8 @@ class PromotionController extends Controller
         $user = auth()->user();
         if ($user->role == 2) {
             return view('admin.promotions');
-        } else {
-            return redirect()->route('dashboard'); // Fixed redirection
+        } elseif($user->role == 1) {
+            return view('client.promotions');
         }
     }
 }

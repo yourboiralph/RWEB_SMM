@@ -16,13 +16,13 @@
             </a>
         </div>
         <div class="hidden md:block md:px-6">
-            <a href="{{ url("/admin/projectdev") }}"
+            <a href="{{ url("/admin/project") }}"
                 class="p-2 flex items-center w-full gap-2 rounded-md 
-                {{ request()->is("admin/projectdev", "admin/projectdev/*") ? 'bg-[#f68e12] text-white font-bold' : '' }}"
-                style="{{ request()->is("admin/projectdev", "admin/projectdev/*") ? 'box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);' : '' }}">
+                {{ request()->is("admin/project", "admin/project/*") ? 'bg-[#f68e12] text-white font-bold' : '' }}"
+                style="{{ request()->is("admin/project", "admin/project/*") ? 'box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);' : '' }}">
                 <img src="/Assets/icon-dashboard-white.png"
                     draggable="false"
-                    class=" p-2 rounded-lg w-10 h-10 {{ request()->is("admin/projectdev", "admin/projectdev/*") ? 'bg-black' : 'bg-[#f66d11]' }}"
+                    class=" p-2 rounded-lg w-10 h-10 {{ request()->is("admin/project", "admin/project/*") ? 'bg-black' : 'bg-[#f66d11]' }}"
                     alt="project Icon">
                 <h1 class="hidden md:block">Project Development</h1>
             </a>

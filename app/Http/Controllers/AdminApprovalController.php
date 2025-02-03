@@ -50,7 +50,7 @@ class AdminApprovalController extends Controller
             'status' => 'approved by admin'
         ]);
 
-        return redirect()->route('admin.project.show')->with('success', 'Project Approved!');
+        return redirect()->route('admin.project')->with('success', 'Project Approved!');
     }
 
     public function approveJobOrder(Request $request, $id)

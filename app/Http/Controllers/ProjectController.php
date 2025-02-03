@@ -25,8 +25,8 @@ class ProjectController extends Controller
             $data = Project::select(['id', 'project_name', 'description', 'target_date', 'status']);
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
-                    return '<a href="' . route('admin.project.edit', $row->id) . '" class="text-blue-500">Approval form</a>
-                            <button onclick="confirmDelete(\'' . route('admin.project.destroy', $row->id) . '\')" class="text-red-500 ml-2">Download</button>';
+                    return '<a href="' . route('admin.projectdev.form.approval', $row->id) . '" class="text-white px-2 py-1 bg-[#fa7011]">Approval form</a>
+                            <button onclick="confirmDelete(\'' . route('admin.project.destroy', $row->id) . '\')" class="text-white bg-slate-700 px-2 py-1 ml-2">Download</button>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);

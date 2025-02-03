@@ -25,10 +25,6 @@
                     </div>
                 @endif
 
-                <div class="px-4 py-2 bg-[#fa7011] w-fit rounded-md mb-4 text-white cursor-pointer hover:bg-[#e5630f]"
-                    onclick="window.location.href='{{ route('admin.project.create') }}'">
-                    Create Project
-                </div>
 
                 <div class="max-h-[500px] overflow-y-auto rounded-md">
                     <table id="projects_table" class="table-auto w-full overflow-y-auto">

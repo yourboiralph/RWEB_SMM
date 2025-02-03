@@ -35,8 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    
 });
 
 
@@ -46,7 +44,7 @@ Route::get('/client/projectdev', [ClientApprovalController::class, 'index'])->na
 Route::get('/client/projectdev/form/approval/{id}', [ClientApprovalController::class, 'show'])->name('client.projectdev.form.approval');
 Route::put('/client/projectdev/form/approval/{id}/approve', [ClientApprovalController::class, 'approve'])->name('client.projectdev.form.approval.approve');
 
-Route::get('/admin/projectdev', [AdminApprovalController::class, 'showAllProjects'])->name('admin.projectdev');
+// Route::get('/admin/projectdev', [AdminApprovalController::class, 'showAllProjects'])->name('admin.projectdev');
 Route::get('/admin/projectdev/form/approval/{id}', [AdminApprovalController::class, 'showProject'])->name('admin.projectdev.form.approval');
 Route::put('/admin/projectdev/form/approval/{id}/approve', [AdminApprovalController::class, 'approveProject'])->name('admin.projectdev.form.approval.approve');
 

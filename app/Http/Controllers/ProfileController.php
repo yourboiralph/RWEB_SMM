@@ -61,7 +61,7 @@ class ProfileController extends Controller
             if ($request->filled('password')) {
                 $user->password = Hash::make($request->input('password'));
             } else {
-                return Redirect::route('client.profile.edit')
+                return Redirect::route('profile.edit')
                     ->withErrors(['password' => 'New password and confirmation are required if you provide the current password.']);
             }
         }
@@ -87,9 +87,9 @@ class ProfileController extends Controller
         $user->save();
 
         if ($user->role == 2) {
-            return Redirect::route('admin.profile.edit')->with('status', 'Profile Updated Successfully!');
+            return Redirect::route('profile.edit')->with('status', 'Profile Updated Successfully!');
         } elseif ($user->role == 1) {
-            return Redirect::route('client.profile.edit')->with('status', 'Profile Updated Successfully!');
+            return Redirect::route('profile.edit')->with('status', 'Profile Updated Successfully!');
         }
         
     }
