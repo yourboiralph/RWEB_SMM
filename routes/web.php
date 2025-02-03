@@ -37,7 +37,9 @@ Route::get('/client/dashboard', function(){
 })->name('client.dashboard');
 
 Route::get('/client/projectdev', [ClientApprovalController::class, 'index'])->name('client.projectdev');
-Route::get('/client/form/approval/{id}', [ClientApprovalController::class, 'show']);
+Route::get('/client/form/approval/{id}', [ClientApprovalController::class, 'show'])->name('client.form.approval');
+Route::put('/client/form/approval/{id}/approve', [ClientApprovalController::class, 'approve'])->name('client.form.approval.approve');
+
 
 
 Route::view('/client/promotions', 'client.promotions')->name('client.promotions');

@@ -29,7 +29,7 @@
             <div class="mt-4">
                 <label class="block text-sm text-[#fa7011]">Client</label>
                 <p id="selected-client">{{$project->client->name}}</p>
-                <input type="hidden" name="client_id" id="client-id">
+                <input type="hidden" name="client_id" id="client-id" value="{{$project->client->id}}">
                 <div
                     class="w-fit px-4 py-2 bg-[#fa7011] cursor-pointer rounded-lg text-white"
                     id="open-modal"

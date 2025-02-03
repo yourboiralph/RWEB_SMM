@@ -23,7 +23,7 @@
                         {{-- Table Wrapper --}}
                         <div class="h-96 overflow-auto">
                             <table class="w-full text-left border-collapse" id="projectTable">
-                                <thead class="sticky top-0 bg-orange-100">
+                                <thead class="sticky top-0 bg-[#fa7011] text-white">
                                     <tr>
                                         <th class="px-6 py-3 border-b-2">File Name</th>
                                         <th class="px-6 py-3 border-b-2">Submission Date</th>
@@ -52,10 +52,11 @@
                                                 @endif
                                             </td>
                                             <td class="px-6 py-3 border-b flex justify-center space-x-2">
-                                                <button
-                                                    class="px-4 py-2 text-sm text-white bg-orange-500 rounded hover:bg-orange-600">
-                                                    Approval Form
-                                                </button>
+                                                <a href="/client/form/approval/{{$project->id}}">
+                                                    <button class="px-4 py-2 text-sm text-white bg-orange-500 rounded hover:bg-orange-600">
+                                                        Approval Form
+                                                    </button>
+                                                </a>                                                
                                                 <button
                                                     class="px-4 py-2 text-sm text-white bg-gray-700 rounded hover:bg-gray-800">
                                                     Download
