@@ -23,9 +23,10 @@ return new class extends Migration
             $table->date('target_date');
             $table->longText('signature_client')->nullable();
             $table->longText('signature_admin')->nullable();
+            $table->unsignedBigInteger('approved_by_admin')->nullable();
             $table->longText('signature_top_manager')->nullable();
+            $table->unsignedBigInteger('approved_by_tm')->nullable();
             $table->timestamps();
-
             $table->foreign('issued_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
         });
