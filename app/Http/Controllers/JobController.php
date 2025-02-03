@@ -10,7 +10,7 @@ class JobController extends Controller
 {
     public function index() {
         $jobs = Job::all();
-        $auth = $auth = auth()->user();
+        $auth = auth()->user();
         return view('admin.joborder', ['jobs' => $jobs, 'auth' => $auth]);
     }
 
