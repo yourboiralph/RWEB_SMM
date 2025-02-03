@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<x-navbar link="admin">
+@extends('layouts.application')
+
+{{-- Pass "client" to the layout --}}
+@php
+    $link = 'operations';
+@endphp
+
+@section('content')
+    <div class="mx-auto max-w-screen-2xl">
     {{-- UPPER PART --}}
     <x-header.upper-part header="Project" />
 
@@ -47,6 +55,7 @@
             </div>
         </form>
     </div>
+</div>
 
         {{-- Include the Modal --}}
         @include('components.modal.select-client')
@@ -95,4 +104,4 @@
         });
     });
     </script>
-</x-navbar>
+@endsection
