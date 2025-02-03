@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+@extends('layouts.application')
 
-    <!-- Tailwind CSS (Optional for Styling) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <x-navbar link="admin">
+{{-- Pass "client" to the layout --}}
+@php
+    $link = 'operations';
+@endphp
+
+@section('content')
+    <div class="mx-auto max-w-screen-2xl">
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+        <!-- Tailwind CSS (Optional for Styling) -->
+        <script src="https://cdn.tailwindcss.com"></script>
         {{-- UPPER PART --}}
-        <x-header.upper-part header="Projects"/>
+        <x-header.upper-part header="Projects" />
 
         {{-- Main Content --}}
         <hr>
@@ -25,11 +24,12 @@
                         {{ session('success') }}
                     </div>
                 @endif
-            
-                <div class="px-4 py-2 bg-[#fa7011] w-fit rounded-md mb-4 text-white cursor-pointer hover:bg-[#e5630f]" onclick="window.location.href='{{ route('admin.project.create') }}'">
+
+                <div class="px-4 py-2 bg-[#fa7011] w-fit rounded-md mb-4 text-white cursor-pointer hover:bg-[#e5630f]"
+                    onclick="window.location.href='{{ route('admin.project.create') }}'">
                     Create Project
-                </div>   
-        
+                </div>
+
                 <div class="max-h-[500px] overflow-y-auto rounded-md">
                     <table id="projects_table" class="table-auto w-full overflow-y-auto">
                         <thead class="sticky top-0 bg-[#fa7011] text-white">
@@ -42,10 +42,10 @@
                             </tr>
                         </thead>
                     </table>
-                </div>  
+                </div>
             </div>
         </div>
-    </x-navbar>
+    </div>
 
     <!-- Scripts -->
     <!-- jQuery (must be loaded first) -->
@@ -72,20 +72,30 @@
                 serverSide: true,
                 ajax: "{{ route('admin.project') }}",
                 lengthChange: false,
-                columns: [
-                    { data: 'project_name', name: 'project_name' },
-                    { data: 'description', name: 'description' },
-                    { data: 'target_date', name: 'target_date' },
-                    { data: 'status', name: 'status' },
-                    { 
-                        data: 'action', 
-                        name: 'action', 
-                        orderable: false, 
-                        searchable: false 
+                columns: [{
+                        data: 'project_name',
+                        name: 'project_name'
+                    },
+                    {
+                        data: 'description',
+                        name: 'description'
+                    },
+                    {
+                        data: 'target_date',
+                        name: 'target_date'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
                     }
                 ]
             });
         });
     </script>
-</body>
-</html>
+@endsection

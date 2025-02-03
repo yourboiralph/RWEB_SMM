@@ -39,20 +39,10 @@
                                             <td class="px-6 py-3 border-b">{{ $project->project_name }}</td>
                                             <td class="px-6 py-3 border-b">{{ $project->target_date }}</td>
                                             <td class="px-6 py-3 border-b">
-                                                @if ($project->status === 'New')
-                                                    <span
-                                                        class="px-3 py-1 text-sm text-white bg-orange-500 rounded-full">Waiting</span>
-                                                @elseif ($project->status === 'Next Phase')
-                                                    <span
-                                                        class="px-3 py-1 text-sm text-white bg-gray-500 rounded-full">Next
-                                                        Phase</span>
-                                                @else
-                                                    <span
-                                                        class="px-3 py-1 text-sm text-white bg-green-500 rounded-full">Signed</span>
-                                                @endif
+                                                {{$project->status}}
                                             </td>
                                             <td class="px-6 py-3 border-b flex justify-center space-x-2">
-                                                <a href="/client/form/approval/{{$project->id}}">
+                                                <a href="/client/projectdev/form/approval/{{$project->id}}">
                                                     <button class="px-4 py-2 text-sm text-white bg-orange-500 rounded hover:bg-orange-600">
                                                         Approval Form
                                                     </button>
