@@ -16,13 +16,13 @@ class AdminApprovalController extends Controller
     public function showAllProjects()
     {
         $projects = Project::all();
-        return view('admin.project.approval', compact('projects'));
+        return view('admin.project', compact('projects'));
     }
 
     public function showAllJobOrder()
     {
         $jobOrder = Job::all();
-        return view('admin.joborder.approval', compact('jobOrder'));
+        return view('admin.joborder', compact('jobOrder'));
     }
 
     public function showProject($id)

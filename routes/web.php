@@ -45,9 +45,9 @@ Route::get('/admin/projectdev', [AdminApprovalController::class, 'showAllProject
 Route::get('/admin/projectdev/form/approval/{id}', [AdminApprovalController::class, 'showProject'])->name('admin.projectdev.form.approval');
 Route::put('/admin/projectdev/form/approval/{id}/approve', [AdminApprovalController::class, 'approveProject'])->name('admin.projectdev.form.approval.approve');
 
-Route::get('/admin/projectdev', [AdminApprovalController::class, 'showAllJobOrder'])->name('admin.projectdev');
-Route::get('/admin/projectdev/form/approval/{id}', [AdminApprovalController::class, 'showJobOrder'])->name('admin.projectdev.form.approval');
-Route::put('/admin/projectdev/form/approval/{id}/approve', [AdminApprovalController::class, 'approveJobOrder'])->name('admin.projectdev.form.approval.approve');
+Route::get('/admin/joborder', [AdminApprovalController::class, 'showAllJobOrder'])->name('admin.joborder');
+Route::get('/admin/joborder/form/approval/{id}', [AdminApprovalController::class, 'showJobOrder'])->name('admin.joborder.form.approval');
+Route::put('/admin/joborder/form/approval/{id}/approve', [AdminApprovalController::class, 'approveJobOrder'])->name('admin.joborder.form.approval.approve');
 
 Route::view('/client/promotions', 'client.promotions')->name('client.promotions');
 
