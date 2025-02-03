@@ -10,13 +10,12 @@ class ClientApprovalController extends Controller
 {
     public function index()
     {
-        // Paginate the projects to show 7 items per page
+        // Paginate the projects to show 7 items per page and filter by status
         $list_of_projects = Project::where('client_id', auth()->user()->id)
                                     ->paginate(7);
-    
+
         return view('client.project-development', compact('list_of_projects'));
     }
-    
 
     public function show($id)
     {
@@ -32,20 +31,22 @@ class ClientApprovalController extends Controller
 
         $project = Project::findOrFail($id);
         $project->update([
+            'status' => 'approved by client',
             'signature_client' => $request->signature_client,
         ]);
 
-        return redirect()->route('client.projectdev')->with('success', 'Project updated successfully.');
+        return redirect()->route('client.projectdev')->with('Approved', 'Project Approved Successfully.');
     }
     public function decline($id)
     {
         
         $project = Project::findOrFail($id);
         $project->update([
+            'status' => 'declined by client',
             'signature_admin' => null,
             'signature_top_manager' => null
         ]);
 
-        return redirect()->route('client.project-development')->with('success', 'Project updated successfully.');
+        return redirect()->route('client.project-development')->with('Declined', 'Project Declined Successfully.');
     }
 }
